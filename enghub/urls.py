@@ -9,3 +9,12 @@ router.register(r'tasks', TaskViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
+
+
+from django.url import path
+
+urlpattern = [
+    path('post/int:post_id>', view.post_detail, name='post_detail'),
+
+]
+
