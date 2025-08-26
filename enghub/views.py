@@ -28,3 +28,9 @@ from django.http import HttpResponse
 
 def post_detail(request, post_id):
     return HttpResponse(f"Post ID is {post_id}")
+
+
+from django.http import HttpResponse
+
+def api_root(request):
+    return HttpResponse("Welcome to the API root!")

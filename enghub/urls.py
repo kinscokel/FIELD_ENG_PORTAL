@@ -13,7 +13,8 @@ urlpatterns = [
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
-    # Your other routes
+    path('', views.api_root, name='api_root'),  # Add this
     path('post/<int:post_id>/', views.post_detail, name='post_detail'),
 ]

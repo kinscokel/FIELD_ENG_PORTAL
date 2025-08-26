@@ -1,3 +1,4 @@
 # Field Engineer Resource Portal
 
 This is my django REST FRAMEWORK web application for tech engineers to create and update various works and also share ideas. This app has some few features as it is not near completion yet, features like admin task, date of project created, updated etc. Other features will be added as project undergoes completion. So as regards to the project buildup, this week i added up sum technical features like the User permission in the permission.py file and also the views for User and Task.
+   Frankly, it hasn't been an easy ride finalising and deploying this project, because thats what this week is about. This week i tried adding comments functionality to my django app and along which i encountered so many bugs and was able to fix a few and also did some migrations and push,so i have my api endpoints ready.  
