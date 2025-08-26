@@ -10,11 +10,10 @@ urlpatterns = [
     path('', include(router.urls)),
 ]
 
+from django.urls import path
+from . import views
 
-from django.url import path
-
-urlpattern = [
-    path('post/int:post_id>', view.post_detail, name='post_detail'),
-
+urlpatterns = [
+    # Your other routes
+    path('post/<int:post_id>/', views.post_detail, name='post_detail'),
 ]
-

@@ -125,7 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-AUTH_USER_MODEL = 'enghub.User'
+# AUTH_USER_MODEL = 'enghub.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

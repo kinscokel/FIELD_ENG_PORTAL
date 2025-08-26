@@ -1,8 +1,6 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework import viewsets, permissions
-from .models import User, Task
+from django.contrib.auth.models import User
+from .models import Task
 from .serializers import UserSerializer, TaskSerializer
 from .permissions import IsAdminOrReadOnly, IsTaskOwnerOrAdmin
 
@@ -16,7 +14,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
     def get_permissions(self):
-        if self.action in ['create']:
+        if self.action == 'create':
             return [permissions.IsAuthenticated(), IsAdminOrReadOnly()]
         elif self.action in ['update', 'partial_update', 'destroy']:
             return [permissions.IsAuthenticated(), IsTaskOwnerOrAdmin()]
@@ -24,3 +22,9 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+
+from django.http import HttpResponse
+
+def post_detail(request, post_id):
+    return HttpResponse(f"Post ID is {post_id}")

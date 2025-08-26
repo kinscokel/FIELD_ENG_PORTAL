@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import User, Task
+from django.contrib.auth.models import User
+from .models import Task
 from django.contrib.auth.hashers import make_password
 
 class UserSerializer(serializers.ModelSerializer):
@@ -7,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'role', 'date_joined']
+        fields = ['id', 'username', 'email', 'password', 'date_joined']
 
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])
