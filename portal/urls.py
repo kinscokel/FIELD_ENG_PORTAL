@@ -38,3 +38,21 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('enghub.urls')),
 ]
+
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from enghub.views import TaskViewSet, UserViewSet, post_detail, api_root
+from enghub.views import home_view
+
+router = DefaultRouter()
+router.register(r'tasks', TaskViewSet)
+router.register(r'users', UserViewSet)
+
+urlpatterns = [
+     path('', home_view),
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('api/post/<int:post_id>/', post_detail, name='post_detail'),
+    path('api/', api_root, name='api_root'),
+]
