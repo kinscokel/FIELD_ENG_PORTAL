@@ -42,17 +42,18 @@ urlpatterns = [
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from enghub.views import TaskViewSet, UserViewSet, post_detail, api_root
-from enghub.views import home_view
+from enghub.views import (
+    TaskViewSet, UserViewSet, post_detail, home_view, task_detail
+)
 
 router = DefaultRouter()
 router.register(r'tasks', TaskViewSet)
 router.register(r'users', UserViewSet)
 
 urlpatterns = [
-     path('', home_view),
+    path('', home_view),
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('api/post/<int:post_id>/', post_detail, name='post_detail'),
-    path('api/', api_root, name='api_root'),
+    path('api/', include(router.urls)),  # ✅ Handles all /api/tasks and /api/users
+    path('api/post/<int:post_id>/', post_detail, name='post_detail'),  # ✅ Test path
+    path('api/task/<int:task_id>/', task_detail, name='task_detail'),  # ✅ JSON Task view
 ]
